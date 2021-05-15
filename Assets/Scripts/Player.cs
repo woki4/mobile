@@ -32,12 +32,17 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform rightArm;
     [SerializeField] private Transform leftArm;
     [SerializeField] private Transform pelvis; // таз
+    [SerializeField] private Transform pelvis2;
     
     [Header("Gain/Lose Weight")]
     [SerializeField] private Vector3 headGrowValue;
-    [SerializeField] private Vector3 otherGrowValue;
+    [SerializeField] private Vector3 chestGrowValue;
+    [SerializeField] private Vector3 armsGrowValue;
+    [SerializeField] private Vector3 legsGrowValue;
     [SerializeField] private Vector3 headLoseValue;
-    [SerializeField] private Vector3 otherLoseValue;
+    [SerializeField] private Vector3 chestLoseValue;
+    [SerializeField] private Vector3 armsLoseValue;
+    [SerializeField] private Vector3 legsLoseValue;
 
     [Header("Weight")]
     [SerializeField] private float weight;
@@ -101,10 +106,11 @@ public class Player : MonoBehaviour
         if (weight < maxWeight)
         {
             head.localScale += headGrowValue; 
-            chest.localScale += otherGrowValue;
-            rightArm.localScale += otherGrowValue;
-            leftArm.localScale += otherGrowValue;
-            pelvis.localScale += otherGrowValue;
+            chest.localScale += chestGrowValue;
+            rightArm.localScale += armsGrowValue;
+            leftArm.localScale += armsGrowValue;
+            pelvis.localScale += legsGrowValue;
+            pelvis2.localScale += legsGrowValue;
             weight += foodWeight;
         }
     }
@@ -122,10 +128,11 @@ public class Player : MonoBehaviour
                 dieEvent.Invoke();
             }
             head.localScale -= headLoseValue * Time.deltaTime; 
-            chest.localScale -= otherLoseValue * Time.deltaTime;
-            rightArm.localScale -= otherLoseValue * Time.deltaTime;
-            leftArm.localScale -= otherLoseValue * Time.deltaTime;
-            pelvis.localScale -= otherLoseValue * Time.deltaTime;
+            chest.localScale -= chestLoseValue * Time.deltaTime;
+            rightArm.localScale -= armsLoseValue * Time.deltaTime;
+            leftArm.localScale -= armsLoseValue * Time.deltaTime;
+            pelvis.localScale -= legsLoseValue * Time.deltaTime;
+            pelvis2.localScale -= legsLoseValue * Time.deltaTime;
             weight -= loseWeightSpeed * Time.deltaTime;
             yield return null;
         }

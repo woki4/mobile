@@ -13,7 +13,7 @@ public class SwipeManager : MonoBehaviour
     public UnityEvent swipeEvent;
     //public UnityEvent touchEvent;
 
-    private const float MIN_SWIPE = 100;
+    private const float MIN_SWIPE = 50;
     private enum Directions
     {
         Left,
